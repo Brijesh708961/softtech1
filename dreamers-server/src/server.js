@@ -143,6 +143,7 @@ app.use(
 );
 
 app.use(express.json());
+app.set("trust proxy", 1); // ✅ required for Render/Railway proxy
 
 // ── SESSION ────────────────────────────────────────────────────
 app.use(
