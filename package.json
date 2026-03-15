@@ -1,6 +1,7 @@
 {
   "name": "dreamers-server",
   "scripts": {
+    "install": "cd dreamers-server && npm install",
     "start": "node dreamers-server/src/server.js"
   }
 }
