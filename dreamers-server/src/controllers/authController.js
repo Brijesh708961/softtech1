@@ -56,14 +56,18 @@ const login = async (req, res) => {
       // Still need to store temp admin ID for the verify2FA step
       req.session.tempAdminId = admin.id;
 
-      return res.status(200).json({
-        success: true,
-        message: "Enter your authenticator code",
-        data: {
-          email: admin.email,
-          twoFactorEnabled: true,
-        },
+      req.session.save((err) => {
+        if (err) console.error("Session save error:", err);
+        res.status(200).json({
+          success: true,
+          message: "Enter your authenticator code",
+          data: {
+            email: admin.email,
+            twoFactorEnabled: true,
+          },
+        });
       });
+      return;
     }
     // ──────────────────────────────────────────────────────────────────
 
@@ -74,14 +78,18 @@ const login = async (req, res) => {
     // store adminId in session temporarily
     req.session.tempAdminId = admin.id;
 
-    res.status(200).json({
-      success: true,
-      message: "OTP sent to your email",
-      data: {
-        email: admin.email,
-        twoFactorEnabled: false,
-      },
+    req.session.save((err) => {
+      if (err) console.error("Session save error:", err);
+      res.status(200).json({
+        success: true,
+        message: "OTP sent to your email",
+        data: {
+          email: admin.email,
+          twoFactorEnabled: false,
+        },
+      });
     });
+    return;
   } catch (error) {
     console.error("LOGIN ERROR:", error);
     res.status(500).json({
