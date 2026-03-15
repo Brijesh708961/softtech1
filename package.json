@@ -1,6 +1,6 @@
 {
   "name": "dreamers-server",
   "scripts": {
-    "start": "node dreamers-server/server.js"
+    "start": "node dreamers-server/src/server.js"
   }
 }
