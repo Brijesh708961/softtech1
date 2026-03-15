@@ -2,8 +2,9 @@
 
 const testimonialService = require("../services/testimonialService");
 
-const fileUrl = (filename) => `http://localhost:5000/uploads/${filename}`;
-
+const fileUrl = (filename) =>
+  `${import.meta.env.VITE_API_URL}/uploads/${filename}`;
+//
 // ── GET ALL ────────────────────────────────────────────────────
 const getAllTestimonials = async (req, res) => {
   try {
@@ -12,13 +13,11 @@ const getAllTestimonials = async (req, res) => {
       .status(200)
       .json({ success: true, count: testimonials.length, data: testimonials });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Failed to get testimonials",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Failed to get testimonials",
+      error: error.message,
+    });
   }
 };
 
@@ -34,13 +33,11 @@ const getTestimonialById = async (req, res) => {
         .json({ success: false, message: "Testimonial not found" });
     res.status(200).json({ success: true, data: testimonial });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Failed to get testimonial",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Failed to get testimonial",
+      error: error.message,
+    });
   }
 };
 
@@ -78,13 +75,11 @@ const createTestimonial = async (req, res) => {
       data: testimonial,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Failed to create testimonial",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Failed to create testimonial",
+      error: error.message,
+    });
   }
 };
 
@@ -136,13 +131,11 @@ const updateTestimonial = async (req, res) => {
       return res
         .status(404)
         .json({ success: false, message: "Testimonial not found" });
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Failed to update testimonial",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Failed to update testimonial",
+      error: error.message,
+    });
   }
 };
 
@@ -158,13 +151,11 @@ const deleteTestimonial = async (req, res) => {
       return res
         .status(404)
         .json({ success: false, message: "Testimonial not found" });
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Failed to delete testimonial",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete testimonial",
+      error: error.message,
+    });
   }
 };
 
