@@ -1,15 +1,25 @@
 const nodemailer = require("nodemailer");
 
 // nodemailer → creates connection to Gmail SMTP server
+// const transporter = nodemailer.createTransport({
+//   // service: "gmail",
+//   // auth: {
+//   //   user: process.env.MAIL_USER,
+//   //   pass: process.env.MAIL_PASS,
+//   // },
+//   host: "smtp.gmail.com",
+//   port: 465,
+//   secure: true,
+//   auth: {
+//     user: process.env.MAIL_USER,
+//     pass: process.env.MAIL_PASS,
+//   },
+// });
+
 const transporter = nodemailer.createTransport({
-  // service: "gmail",
-  // auth: {
-  //   user: process.env.MAIL_USER,
-  //   pass: process.env.MAIL_PASS,
-  // },
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  host: process.env.MAIL_HOST,
+  port: Number(process.env.MAIL_PORT),
+  secure: false,
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS,
