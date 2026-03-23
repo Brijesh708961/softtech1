@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../../assets/common/navbar1.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -43,7 +44,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/src/assets/common/navbar1.png"
+              src={logo}
               alt="Dreamers Softtech Logo"
               className="h-10 w-auto object-contain"
             />
